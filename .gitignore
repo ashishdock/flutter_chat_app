@@ -9,6 +9,13 @@
 .history
 .svn/
 secrets
+*build.gradle*
+*gradle.properties*
+*google-services.json
+*settings_aar.gradle
+android/app/build.gradle
+android/build.gradle
+android/gradle.properties
 
 # IntelliJ related
 *.iml
