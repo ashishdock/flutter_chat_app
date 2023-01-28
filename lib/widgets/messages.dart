@@ -23,6 +23,12 @@ class Messages extends StatelessWidget {
               .orderBy('createdAt', descending: true)
               .snapshots(),
           builder: (context, chatSnapshot) {
+            if (chatSnapshot == null) {
+              return Container(
+                  // color: Colors.white,
+                  );
+            }
+
             if (chatSnapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(),
@@ -32,6 +38,16 @@ class Messages extends StatelessWidget {
             print(chatDocs);
             print(chatDocs[0]['userId']);
             // print(snapshot.data.uid);
+            if (chatDocs == null) {
+              return Container(
+                  // color: Colors.white,
+                  );
+            }
+            if (chatDocs.length == 0) {
+              return Container(
+                  // color: Colors.white,
+                  );
+            }
 
             return ListView.builder(
                 reverse: true,
@@ -42,6 +58,7 @@ class Messages extends StatelessWidget {
                     isMe: chatDocs[index]['userId'] == futureSnapshot.data.uid,
                     key: ValueKey(chatDocs[index].documentID),
                     username: chatDocs[index]['username'],
+                    userImage: chatDocs[index]['userImage'],
                   );
                 });
           },
